@@ -1,0 +1,11 @@
+<html><head><title>{{ title }}</title></head><body>
+{% for row in rows %}
+<h1>Item</h1>
+<table>
+  {% for k,v in row.items() %}
+    <tr><td style="border-top: 1px #000000 solid;">{{ k }}</td><td style="border-top: 1px #000000 solid;">{{ v }}</td></tr>
+  {% endfor %}
+</table>
+{% endfor %}
+</body>
+</html>
