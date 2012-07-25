@@ -5,6 +5,7 @@ import csv
 from jinja2 import Template
 import StringIO
 import pprint
+import os, os.path
 
 def UnicodeDictReader(utf8_data, **kwargs):
     csv_reader = csv.DictReader(utf8_data, **kwargs)
@@ -12,7 +13,7 @@ def UnicodeDictReader(utf8_data, **kwargs):
         yield dict([(k,v) for (k,v) in [(key, unicode(value, 'utf-8')) for key, value in row.iteritems()] if v.replace(' ', '')])
 
 if __name__ == '__main__' :
-	template = Template(open('tmpl.txt').read())
+	template = Template(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tmpl.txt')).read())
 
 	rows = list(UnicodeDictReader(open(sys.argv[1])))
 	
